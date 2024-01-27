@@ -6,7 +6,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import { StyleSheet } from "react-native";
 import { emptyCase } from "../utils/emptyCase";
-import axios from "axios";
+import textInputStyle from "../styles/textInput";
+import buttonStyle from "../styles/button";
 
 interface NavigationProps {
   navigation: NativeStackNavigationProp<RootStackParamList, "ReportScreen">;
@@ -26,80 +27,90 @@ const ReportScreen = ({ navigation }: NavigationProps) => {
   };
 
   const handleSubmit = async () => {
-    try {
-      const response = await axios.post(
-        "https://sahakshak-backend.vercel.app/api/cases",
-        caseData
-      );
+    navigation.navigate("OtpScreen");
 
-      if (response.status === 201) {
-        navigation.navigate("OtpScreen");
-      }
-    } catch (error) {
-      console.error("Error:", error.response);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "https://sahakshak-backend.vercel.app/api/cases",
+    //     caseData
+    //   );
+
+    //   if (response.status === 201) {
+    //     navigation.navigate("OtpScreen");
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error.response);
+    // }
   };
 
   return (
     <ScrollView>
       <TextInput
-        style={styles.textInput}
         mode="outlined"
         label="Title"
         value={caseData.title}
         onChangeText={(value) => handleInputChange("title", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
       />
       <TextInput
-        style={styles.textInput}
         mode="outlined"
         label="Description"
         value={caseData.description}
         onChangeText={(value) => handleInputChange("description", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
       />
       <TextInput
         label="Name"
         mode="outlined"
-        style={styles.textInput}
         value={caseData.name}
         onChangeText={(value) => handleInputChange("name", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
       />
       <TextInput
         mode="outlined"
         label="Age"
         value={String(caseData.age)}
         onChangeText={(value) => handleInputChange("age", parseInt(value))}
-        style={styles.textInput}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         keyboardType="numeric"
       />
       <TextInput
         label="Phone Number"
         mode="outlined"
-        style={styles.textInput}
         value={caseData.phoneNumber}
         onChangeText={(value) => handleInputChange("phoneNumber", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         keyboardType="phone-pad"
       />
       <TextInput
         label="Email"
         mode="outlined"
-        style={styles.textInput}
         value={caseData.email}
         onChangeText={(value) => handleInputChange("email", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         keyboardType="email-address"
       />
       <TextInput
         mode="outlined"
-        style={styles.textInput}
         label="Address"
         value={caseData.address}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         onChangeText={(value) => handleInputChange("address", value)}
       />
       <TextInput
         mode="outlined"
         label="Pin Code"
-        style={styles.textInput}
         value={caseData.pinCode}
         onChangeText={(value) => handleInputChange("pinCode", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         keyboardType="numeric"
       />
       <TextInput
@@ -111,20 +122,22 @@ const ReportScreen = ({ navigation }: NavigationProps) => {
           year: "numeric",
         })}
         onChangeText={(value) => handleInputChange("timeOfCrime", value)}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
         keyboardType="numeric"
-        style={styles.textInput}
       />
       <TextInput
         label="Suspect(If Any)"
         mode="outlined"
         value={caseData.suspect}
         onChangeText={(value) => handleInputChange("suspect", value)}
-        style={styles.textInput}
+        style={textInputStyle.textInputStyle}
+        outlineStyle={textInputStyle.outlineStyle}
       />
       <Button
         mode="contained"
         onPress={handleSubmit}
-        style={styles.buttonStyle}
+        style={buttonStyle.buttonStyle}
       >
         Submit
       </Button>
@@ -139,13 +152,5 @@ const styles = StyleSheet.create({
     margin: 5,
     marginStart: 12,
     marginEnd: 12,
-  },
-  buttonStyle: {
-    backgroundColor: "#231212",
-    margin: 5,
-    marginStart: 12,
-    marginEnd: 12,
-    borderRadius: 4,
-    padding: 4,
   },
 });

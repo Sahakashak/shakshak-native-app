@@ -1,18 +1,17 @@
 import Case from "../interface/case.interface";
 
 const emptyCase: Case = {
-  title: "gfdgfdg",
-  description: "gfdgdfgd",
-  status: "Open",
-  name: "fgdfgdg",
-  gender: "Male",
-  age: 12,
-  phoneNumber: "wewrewfgfg",
-  email: "gdfgdfgdfgf",
-  address: "fgfdgfdgdfgfdgfdg",
-  pinCode: "fgdgdfgw4etdfg",
+  title: "",
+  description: "",
+  name: "",
+  gender: "",
+  age: 0,
+  phoneNumber: "",
+  email: "",
+  address: "",
+  pinCode: "",
   timeOfCrime: new Date(),
-  suspect: "fgdfgdrf",
+  suspect: "",
 };
 
 export { emptyCase };

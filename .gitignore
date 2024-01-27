@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+#environmental veriables
+.env
+
 # Expo
 .expo/
 dist/
